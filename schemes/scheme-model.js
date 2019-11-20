@@ -16,8 +16,19 @@ function findSteps(id) {
            .orderBy('steps.step_number');
 };
 
+function add(schemeData) {
+    return db('schemes').insert(schemeData)
+            .then(idArray => {
+                return {
+                    id: idArray[0],
+                    ...schemeData
+                };
+            })     
+};
+
 module.exports = {
     find,
     findById,
-    findSteps
+    findSteps,
+    add
 }
