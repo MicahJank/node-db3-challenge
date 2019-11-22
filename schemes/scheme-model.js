@@ -45,6 +45,13 @@ function remove(id) {
                     return err;
                 };
             });
+};
+
+function addStep(step, scheme_id) {
+    return db('steps').insert({...step, scheme_id})
+            .then(idArray => {
+                return db('steps').where({id: idArray[0]}).first();
+            })
 }
 
 module.exports = {
@@ -53,5 +60,6 @@ module.exports = {
     findSteps,
     add,
     update,
-    remove
+    remove,
+    addStep
 }
