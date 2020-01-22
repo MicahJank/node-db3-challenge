@@ -48,9 +48,9 @@ router.get('/:id/steps', (req, res) => {
 
 router.post('/', (req, res) => {
   const schemeData = req.body;
-
   Schemes.add(schemeData)
   .then(scheme => {
+    console.log(scheme);
     res.status(201).json(scheme);
   })
   .catch (err => {
@@ -113,5 +113,5 @@ router.delete('/:id', (req, res) => {
     res.status(500).json({ message: 'Failed to delete scheme' });
   });
 });
-
+``
 module.exports = router;
